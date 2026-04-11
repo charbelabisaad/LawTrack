@@ -1,0 +1,58 @@
+﻿using LawTrack.Models;
+using Microsoft.EntityFrameworkCore;
+
+namespace LawTrack.Data
+{
+	public class LawTrackDbContext:DbContext
+	{
+		public LawTrackDbContext(DbContextOptions<LawTrackDbContext> options) : base(options) { }
+
+		public DbSet<Status> Statuses { get; set; }
+		public DbSet<UserType>	UserTypes { get; set; }
+		public DbSet<Role> Roles { get; set; }
+		public DbSet<User> Users { get; set; }
+		public DbSet<ClientType> ClientTypes { get; set; }
+		public DbSet<Client> Clients {  get; set; }	
+		public DbSet<CaseType> CaseTypes { get; set; }
+		public DbSet<CaseStatus> CaseStatuses { get; set; }
+		public DbSet<Priority> Priorities { get; set; }
+		public DbSet<Court> Courts { get; set; }
+		public DbSet<Case> Cases { get; set; }
+
+
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			base.OnModelCreating(modelBuilder);
+
+			// 🔹 Handle audit relations globally
+			foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+			{
+				if (typeof(BaseEntity).IsAssignableFrom(entityType.ClrType))
+				{
+					modelBuilder.Entity(entityType.ClrType)
+						.HasOne(typeof(User), "CreatedUser")
+						.WithMany()
+						.HasForeignKey("CreatedUserID");
+
+					modelBuilder.Entity(entityType.ClrType)
+						.HasOne(typeof(User), "UpdatedUser")
+						.WithMany()
+						.HasForeignKey("UpdatedUserID");
+
+					modelBuilder.Entity(entityType.ClrType)
+						.HasOne(typeof(User), "DeletedUser")
+						.WithMany()
+						.HasForeignKey("DeletedUserID");
+				}
+			}
+
+			foreach (var relationship in modelBuilder.Model.GetEntityTypes()
+			.SelectMany(e => e.GetForeignKeys()))
+			{
+				relationship.DeleteBehavior = DeleteBehavior.Restrict;
+			}
+
+		}
+
+	}
+}
