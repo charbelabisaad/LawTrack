@@ -82,15 +82,6 @@ namespace LawTrack.Models
 
 		[ForeignKey("StatusID")]
 		public virtual Status Status { get; set; }
-
-		// 🔹 Audit
-		public int? CreatedUserID { get; set; }
-		public DateTime? CreatedDate { get; set; }
-
-		public int? UpdatedUserID { get; set; }
-		public DateTime? UpdatedDate { get; set; }
-
-		public int? DeletedUserID { get; set; }
-		public DateTime? DeletedDate { get; set; }
+		 
 	}
 }

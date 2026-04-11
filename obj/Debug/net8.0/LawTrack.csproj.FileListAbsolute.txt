@@ -450,3 +450,5 @@ C:\Users\User\Documents\Job\Web\VS2022\LawTrack\LawTrack\obj\Debug\net8.0\refint
 C:\Users\User\Documents\Job\Web\VS2022\LawTrack\LawTrack\obj\Debug\net8.0\LawTrack.pdb
 C:\Users\User\Documents\Job\Web\VS2022\LawTrack\LawTrack\obj\Debug\net8.0\LawTrack.genruntimeconfig.cache
 C:\Users\User\Documents\Job\Web\VS2022\LawTrack\LawTrack\obj\Debug\net8.0\ref\LawTrack.dll
+C:\Users\User\Documents\Job\Web\VS2022\LawTrack\LawTrack\obj\Debug\net8.0\LawTrack.sourcelink.json
+C:\Users\User\Documents\Job\Web\VS2022\LawTrack\LawTrack\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
