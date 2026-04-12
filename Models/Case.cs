@@ -8,8 +8,10 @@ namespace LawTrack.Models
 	[Index(nameof(TypeID))]
 	[Index(nameof(StatusID))]
 	[Index(nameof(AssignedUserID))]
-	[Index(nameof(CourtID))]
-	public class Case
+	[Index(nameof(PriorityID))] 
+	[Index(nameof(CurrencyIDDefault))]
+	[Index(nameof(CurrencyIDSecond))]
+	public class Case : BaseEntity
 	{
 		[Key]
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -42,11 +44,8 @@ namespace LawTrack.Models
 
 		[Required]
 		[StringLength(3, MinimumLength = 3)]
-		public string CaseStatusID { get; set; }
-
-		[ForeignKey("CaseStatusID")]
-		public virtual CaseStatus CaseStatus { get; set; }
-
+		public string  StatusID { get; set; }
+ 
 		// 🔹 Assigned Lawyer/User
 		public int? AssignedUserID { get; set; }
 
@@ -65,21 +64,28 @@ namespace LawTrack.Models
 		[ForeignKey("PriorityID")]
 		public virtual Priority Priority { get; set; }
 
-		// 🔹 Court
-		public int? CourtID { get; set; }
+		[Column(TypeName = "decimal(18,2)")]
+		public decimal EstimatedAmountDefault { get; set; } = 0;
 
-		[ForeignKey("CourtID")]
-		public virtual Court Court { get; set; }
+		[Required]
+		public int CurrencyIDDefault { get; set; }
 
+		[ForeignKey("CurrencyIDDefault")]
+		public virtual Currency CurrencyDefault { get; set; }
+
+		[Column(TypeName = "decimal(18,2)")]
+		public decimal EstimatedAmountSecond { get; set; } = 0;
+
+		[Required]
+		public int CurrencyIDSecond {  get; set; }
+
+		[ForeignKey("CurrencyIDSecond")]
+		public virtual Currency CurrencySecond { get; set;}
+  
 		// 🔹 Notes
 		[Column(TypeName = "nvarchar(max)")]
 		public string? Notes { get; set; }
-
-		// 🔹 Status
-		[Required]
-		[StringLength(1)]
-		public string StatusID { get; set; }
-
+ 
 		[ForeignKey("StatusID")]
 		public virtual Status Status { get; set; }
 		 

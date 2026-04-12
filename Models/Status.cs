@@ -5,7 +5,7 @@ namespace LawTrack.Models
 	public class Status
 	{
 		[Key]
-		[StringLength(1, MinimumLength = 1)]
+		[StringLength(3, MinimumLength = 3)]
 		public string ID { get; set; }
 
 		[Required]
@@ -15,6 +15,6 @@ namespace LawTrack.Models
 		[Required]
 		[StringLength(7, MinimumLength = 7)]
 		public string Color { get; set; }
-
+		 
 	}
 }

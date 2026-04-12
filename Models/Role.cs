@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace LawTrack.Models
 { 
 	[Index(nameof(StatusID))]
-	public class Role
+	public class Role : BaseEntity
 	{
 		[Key]
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -19,7 +19,7 @@ namespace LawTrack.Models
 		public bool IsAdmin { get; set; } = false;
 
 		[Required]
-		[StringLength(1)]
+		[StringLength(3, MinimumLength = 3)]
 		public string StatusID { get; set; }
 
 		[ForeignKey("StatusID")]

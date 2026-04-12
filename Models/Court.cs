@@ -9,6 +9,8 @@ namespace LawTrack.Models
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 		public int ID { get; set; }
 
+		public string? Number { get; set; }	
+
 		[Required]
 		[StringLength(200)]
 		public string Name { get; set; }
@@ -21,7 +23,7 @@ namespace LawTrack.Models
 		public string Address { get; set; }
 
 		[Required]
-		[StringLength(1, MinimumLength = 1)]
+		[StringLength(3, MinimumLength = 3)]
 		public string StatusID { get; set; }
 
 		[ForeignKey("StatusID")]

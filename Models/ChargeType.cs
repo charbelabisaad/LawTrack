@@ -1,26 +1,27 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace LawTrack.Models
 {
 	[Index(nameof(StatusID))]
-	public class ClientType : BaseEntity
+	public class ChargeType : BaseEntity
 	{
 		[Key]
-		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 		public int ID { get; set; }
 
 		[Required]
-		[StringLength(50)]
-		public string Description { get; set; }
-		 
+		[StringLength(100)]
+		public string Name { get; set; }
+
+		[StringLength(300)]
+		public string? Description { get; set; }
+
 		[Required]
 		[StringLength(3, MinimumLength = 3)]
 		public string StatusID { get; set; }
 
 		[ForeignKey("StatusID")]
 		public virtual Status Status { get; set; }
-		 
 	}
 }
