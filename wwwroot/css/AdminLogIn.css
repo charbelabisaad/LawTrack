@@ -1,0 +1,76 @@
+﻿ 
+    body.login-page {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/Images/GENERAL/LogInCover.webp');
+        background-size: cover;
+        background-position: center;
+    }
+
+.card {
+    background-color: rgba(255,255,255,0.7) !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+}
+
+.card-body {
+    background-color: transparent !important;
+}
+ 
+.login-box {
+    max-width: 700px;
+    width: 90%;
+}
+
+.login-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.login-logo-col {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.login-form-col {
+    flex: 1;
+    padding: 20px;
+}
+
+.btn-darkblue-gold {
+    background-color: #021a32; 
+    color: #ffffff !important;
+    border:1px solid #021a32;
+    transition:.5s; 
+}
+
+.btn-darkblue-gold:focus{
+    box-shadow:none; 
+}
+
+.btn-darkblue-gold:hover {
+    background-color: #ffffff !important; 
+    color: #945e1b !important;
+    border:1px solid #945e1b;
+}
+
+@media (max-width: 768px) {
+    .login-row {
+        flex-direction: column;
+    }
+
+    .login-box {
+        width: 90%;
+    }
+}
+
+.btn-orange {
+    background-color: #ff6600;
+    color: white;
+}
+
