@@ -9,6 +9,22 @@
       "PackagePath": "staticwebassets\\Images\\GENERAL\\LawTrackLogo.webp"
     },
     {
+      "Id": "C:\\Users\\User\\Documents\\Job\\Web\\VS2022\\LawTrack\\LawTrack\\wwwroot\\Images\\GENERAL\\LawTrackLogoGoldTransparent.webp",
+      "PackagePath": "staticwebassets\\Images\\GENERAL\\LawTrackLogoGoldTransparent.webp"
+    },
+    {
+      "Id": "C:\\Users\\User\\Documents\\Job\\Web\\VS2022\\LawTrack\\LawTrack\\wwwroot\\Images\\GENERAL\\LawTrackWallPaperWithLogo.webp",
+      "PackagePath": "staticwebassets\\Images\\GENERAL\\LawTrackWallPaperWithLogo.webp"
+    },
+    {
+      "Id": "C:\\Users\\User\\Documents\\Job\\Web\\VS2022\\LawTrack\\LawTrack\\wwwroot\\Images\\GENERAL\\LawTrackWallPaperWithoutLogo.webp",
+      "PackagePath": "staticwebassets\\Images\\GENERAL\\LawTrackWallPaperWithoutLogo.webp"
+    },
+    {
+      "Id": "C:\\Users\\User\\Documents\\Job\\Web\\VS2022\\LawTrack\\LawTrack\\wwwroot\\Images\\GENERAL\\LogInCover.webp",
+      "PackagePath": "staticwebassets\\Images\\GENERAL\\LogInCover.webp"
+    },
+    {
       "Id": "C:\\Users\\User\\Documents\\Job\\Web\\VS2022\\LawTrack\\LawTrack\\wwwroot\\css\\AdminLogIn.css",
       "PackagePath": "staticwebassets\\css\\AdminLogIn.css"
     },

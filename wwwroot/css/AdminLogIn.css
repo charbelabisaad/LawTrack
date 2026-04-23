@@ -1,52 +1,68 @@
-﻿ 
-    body.login-page {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/Images/GENERAL/LogInCover.webp');
-        background-size: cover;
-        background-position: center;
-    }
-
-.card {
-    background-color: rgba(255,255,255,0.7) !important;
-    border-radius: 10px !important;
-    overflow: hidden !important;
+﻿html, body {
+    height: 100%;
+    margin: 0;
 }
 
+    body.login-page {
+        min-height: 100vh;
+        display: flex;
+        justify-content: flex-start; /* LEFT */
+        align-items: flex-start; /* TOP */
+ 
+
+        background: url('/Images/GENERAL/LawTrackWallPaperWithoutLogo.webp') center / cover no-repeat;
+    }
+
+/* remove auto centering from AdminLTE */
+
+
+.card {
+    background: rgba(255, 255, 255, 0.2) !important; /* soft glass */ 
+
+    border-radius: 14px !important;
+    border: none !important;
+    overflow: hidden !important;
+    /* premium shadow */
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35) !important;
+}
 .card-body {
     background-color: transparent !important;
 }
  
 .login-box {
-    max-width: 700px;
+    max-width: 500px;
     width: 90%;
+    margin:5% 0 0 5%;
 }
 
-.login-row {
-    display: flex;
-    flex-wrap: wrap;
+.login-row {   
 }
 
-.login-logo-col {
-    flex: 1;
-    display: flex;
+.login-logo-col { 
+    max-width:400px; 
     align-items: center;
-    justify-content: center;
+    justify-content: center; 
+}
+
+.login-logo-image{
+    max-width:400px;
+    max-height:400px;
+    width:100%;
+}
+
+.login-form-col { 
     padding: 20px;
 }
 
-.login-form-col {
-    flex: 1;
-    padding: 20px;
+.login-box-msg{
+    color: #ffffff;
 }
 
 .btn-darkblue-gold {
-    background-color: #021a32; 
+    background-color: rgba(255,255,255,0.3);
     color: #ffffff !important;
-    border:1px solid #021a32;
-    transition:.5s; 
+    border: 1px solid #ffffff;
+    transition: .5s;
 }
 
 .btn-darkblue-gold:focus{
@@ -54,9 +70,7 @@
 }
 
 .btn-darkblue-gold:hover {
-    background-color: #ffffff !important; 
-    color: #945e1b !important;
-    border:1px solid #945e1b;
+    background-color: rgba(255,255,255,0.5) !important; 
 }
 
 @media (max-width: 768px) {

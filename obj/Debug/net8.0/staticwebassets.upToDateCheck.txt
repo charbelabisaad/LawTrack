@@ -72,6 +72,10 @@ wwwroot\dist\js\pages\dashboard2.js
 wwwroot\dist\js\pages\dashboard3.js
 wwwroot\favicon.ico
 wwwroot\Images\GENERAL\LawTrackLogo.webp
+wwwroot\Images\GENERAL\LawTrackLogoGoldTransparent.webp
+wwwroot\Images\GENERAL\LawTrackWallPaperWithLogo.webp
+wwwroot\Images\GENERAL\LawTrackWallPaperWithoutLogo.webp
+wwwroot\Images\GENERAL\LogInCover.webp
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map

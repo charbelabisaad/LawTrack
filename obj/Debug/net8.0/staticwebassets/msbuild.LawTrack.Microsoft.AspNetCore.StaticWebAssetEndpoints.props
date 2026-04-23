@@ -1,16 +1,16 @@
 ﻿<Project>
   <ItemGroup>
-    <StaticWebAssetEndpoint Include="_content/LawTrack/css/AdminLogIn.8dqt1yhmnc.css">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\AdminLogIn.css'))</AssetFile>
-      <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"8dqt1yhmnc"},{"Name":"integrity","Value":"sha256-RNxGs2HruVTrQ6uzix00rJMyCbTnzKuwwEpMkXDfY/g="},{"Name":"label","Value":"_content/LawTrack/css/AdminLogIn.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1154"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022RNxGs2HruVTrQ6uzix00rJMyCbTnzKuwwEpMkXDfY/g=\u0022"},{"Name":"Last-Modified","Value":"Wed, 22 Apr 2026 21:48:03 GMT"}]]]></ResponseHeaders>
-    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/LawTrack/css/AdminLogIn.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\AdminLogIn.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-RNxGs2HruVTrQ6uzix00rJMyCbTnzKuwwEpMkXDfY/g="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1154"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022RNxGs2HruVTrQ6uzix00rJMyCbTnzKuwwEpMkXDfY/g=\u0022"},{"Name":"Last-Modified","Value":"Wed, 22 Apr 2026 21:48:03 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-ZEwYKBpcDx2s3OvHgvH62Io3A1mwLB62Y9bulpxBw04="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1631"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022ZEwYKBpcDx2s3OvHgvH62Io3A1mwLB62Y9bulpxBw04=\u0022"},{"Name":"Last-Modified","Value":"Thu, 23 Apr 2026 21:37:00 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/LawTrack/css/AdminLogIn.o9kc2spo30.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\AdminLogIn.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"o9kc2spo30"},{"Name":"integrity","Value":"sha256-ZEwYKBpcDx2s3OvHgvH62Io3A1mwLB62Y9bulpxBw04="},{"Name":"label","Value":"_content/LawTrack/css/AdminLogIn.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1631"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022ZEwYKBpcDx2s3OvHgvH62Io3A1mwLB62Y9bulpxBw04=\u0022"},{"Name":"Last-Modified","Value":"Thu, 23 Apr 2026 21:37:00 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/LawTrack/css/site.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</AssetFile>
@@ -887,6 +887,54 @@
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-\u002BO22N2P56V1RVFXi4O5TbzZL/GyMTH7hWF7KT9Hl8YA="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"150998"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022\u002BO22N2P56V1RVFXi4O5TbzZL/GyMTH7hWF7KT9Hl8YA=\u0022"},{"Name":"Last-Modified","Value":"Wed, 22 Apr 2026 21:49:53 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/LawTrack/Images/GENERAL/LawTrackLogoGoldTransparent.gww67xmjps.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\GENERAL\LawTrackLogoGoldTransparent.webp'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"gww67xmjps"},{"Name":"integrity","Value":"sha256-8Gi1\u002BJzhDGSQbtYjj8Tab2vbbbT21Z0u7FcNYG\u002Ba\u002BeE="},{"Name":"label","Value":"_content/LawTrack/Images/GENERAL/LawTrackLogoGoldTransparent.webp"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"75994"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u00228Gi1\u002BJzhDGSQbtYjj8Tab2vbbbT21Z0u7FcNYG\u002Ba\u002BeE=\u0022"},{"Name":"Last-Modified","Value":"Thu, 23 Apr 2026 21:08:55 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/LawTrack/Images/GENERAL/LawTrackLogoGoldTransparent.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\GENERAL\LawTrackLogoGoldTransparent.webp'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-8Gi1\u002BJzhDGSQbtYjj8Tab2vbbbT21Z0u7FcNYG\u002Ba\u002BeE="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"75994"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u00228Gi1\u002BJzhDGSQbtYjj8Tab2vbbbT21Z0u7FcNYG\u002Ba\u002BeE=\u0022"},{"Name":"Last-Modified","Value":"Thu, 23 Apr 2026 21:08:55 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/LawTrack/Images/GENERAL/LawTrackWallPaperWithLogo.kxfq4cv8iv.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\GENERAL\LawTrackWallPaperWithLogo.webp'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"kxfq4cv8iv"},{"Name":"integrity","Value":"sha256-KPc7q/nYkS14WGyasVEaAcIAAnZoSJXGqHLNcDDBGuo="},{"Name":"label","Value":"_content/LawTrack/Images/GENERAL/LawTrackWallPaperWithLogo.webp"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"79650"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022KPc7q/nYkS14WGyasVEaAcIAAnZoSJXGqHLNcDDBGuo=\u0022"},{"Name":"Last-Modified","Value":"Thu, 23 Apr 2026 20:03:53 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/LawTrack/Images/GENERAL/LawTrackWallPaperWithLogo.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\GENERAL\LawTrackWallPaperWithLogo.webp'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-KPc7q/nYkS14WGyasVEaAcIAAnZoSJXGqHLNcDDBGuo="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"79650"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022KPc7q/nYkS14WGyasVEaAcIAAnZoSJXGqHLNcDDBGuo=\u0022"},{"Name":"Last-Modified","Value":"Thu, 23 Apr 2026 20:03:53 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/LawTrack/Images/GENERAL/LawTrackWallPaperWithoutLogo.vo9ievuuue.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\GENERAL\LawTrackWallPaperWithoutLogo.webp'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"vo9ievuuue"},{"Name":"integrity","Value":"sha256-cfS8gjAqZUnSlweambzcb8hTq/lm5Y/gSKfQLWFFQEc="},{"Name":"label","Value":"_content/LawTrack/Images/GENERAL/LawTrackWallPaperWithoutLogo.webp"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"80050"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022cfS8gjAqZUnSlweambzcb8hTq/lm5Y/gSKfQLWFFQEc=\u0022"},{"Name":"Last-Modified","Value":"Thu, 23 Apr 2026 20:04:36 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/LawTrack/Images/GENERAL/LawTrackWallPaperWithoutLogo.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\GENERAL\LawTrackWallPaperWithoutLogo.webp'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-cfS8gjAqZUnSlweambzcb8hTq/lm5Y/gSKfQLWFFQEc="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"80050"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022cfS8gjAqZUnSlweambzcb8hTq/lm5Y/gSKfQLWFFQEc=\u0022"},{"Name":"Last-Modified","Value":"Thu, 23 Apr 2026 20:04:36 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/LawTrack/Images/GENERAL/LogInCover.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\GENERAL\LogInCover.webp'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-qhAdvxplE0s0I59ON6ZWCsWLBWhccUuu///EaRh2suk="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"108852"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022qhAdvxplE0s0I59ON6ZWCsWLBWhccUuu///EaRh2suk=\u0022"},{"Name":"Last-Modified","Value":"Wed, 22 Apr 2026 21:56:54 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/LawTrack/Images/GENERAL/LogInCover.y2orijq1cw.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\GENERAL\LogInCover.webp'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"y2orijq1cw"},{"Name":"integrity","Value":"sha256-qhAdvxplE0s0I59ON6ZWCsWLBWhccUuu///EaRh2suk="},{"Name":"label","Value":"_content/LawTrack/Images/GENERAL/LogInCover.webp"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"108852"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022qhAdvxplE0s0I59ON6ZWCsWLBWhccUuu///EaRh2suk=\u0022"},{"Name":"Last-Modified","Value":"Wed, 22 Apr 2026 21:56:54 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/LawTrack/js/site.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\site.js'))</AssetFile>
