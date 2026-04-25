@@ -44,5 +44,13 @@ namespace LawTrack.Models
 
 		// 🔹 Next Session Date
 		public DateTime? NextSessionDate { get; set; }
+
+		[Required]
+		[StringLength(1, MinimumLength = 1)]
+		public string StatusID { get; set; }
+
+		[ForeignKey("StatusID")]
+		public virtual Status Status { get; set; }
+
 	}
 }

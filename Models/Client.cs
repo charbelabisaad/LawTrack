@@ -44,7 +44,7 @@ namespace LawTrack.Models
 		public virtual ClientType ClientType { get; set; }
 		 
 		[Required]
-		[StringLength(3, MinimumLength = 3)]
+		[StringLength(1, MinimumLength = 1)]
 		public string StatusID { get; set; }
 
 		[ForeignKey("StatusID")]

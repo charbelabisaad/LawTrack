@@ -5,22 +5,20 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace LawTrack.Models
 {
 	[Index(nameof(StatusID))]
-	public class ClientType : BaseEntity
+	public class PermissionValue
 	{
 		[Key]
-		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 		public int ID { get; set; }
 
 		[Required]
-		[StringLength(50)]
-		public string Description { get; set; }
-		 
+		public string Name { get; set; }
+
 		[Required]
 		[StringLength(1, MinimumLength = 1)]
 		public string StatusID { get; set; }
 
 		[ForeignKey("StatusID")]
 		public virtual Status Status { get; set; }
-		 
+
 	}
 }

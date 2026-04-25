@@ -5,7 +5,7 @@ namespace LawTrack.Models
 	public class Status
 	{
 		[Key]
-		[StringLength(3, MinimumLength = 3)]
+		[StringLength(1, MinimumLength = 1)]
 		public string ID { get; set; }
 
 		[Required]

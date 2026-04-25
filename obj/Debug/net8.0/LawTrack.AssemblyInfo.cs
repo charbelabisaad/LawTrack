@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LawTrack")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e3ab316e5a6f49d0c5e0eaecf7e1db815d0507ee")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fbb2fe31ce186c56f38a5700ad14e12d553f9774")]
 [assembly: System.Reflection.AssemblyProductAttribute("LawTrack")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LawTrack")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

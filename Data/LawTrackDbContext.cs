@@ -14,6 +14,7 @@ namespace LawTrack.Data
 		public DbSet<ClientType> ClientTypes { get; set; }
 		public DbSet<Client> Clients {  get; set; }	
 		public DbSet<CaseType> CaseTypes { get; set; } 
+		public DbSet<CaseStatus> CaseStatuses { get; set; }	
 		public DbSet<Priority> Priorities { get; set; }
 		public DbSet<Court> Courts { get; set; }
 		public DbSet<Currency> Currencies { get; set; }
@@ -31,7 +32,12 @@ namespace LawTrack.Data
 		public DbSet<Journal> Journals { get; set; }
 		public DbSet<ModelStatus> ModelStatuses { get; set; }
 		public DbSet<CaseCourt> CaseCourts { get; set; }
-		 
+		public DbSet<Module> Modules { get; set; }	
+		public DbSet<PermissionAction> PermissionActions { get; set; }
+		public DbSet<PermissionValue> PermissionValues { get; set; }
+		public DbSet<Permission> Permissions { get; set; }
+		public DbSet<RolePermission> RolePermissions { get; set; }
+		  
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			base.OnModelCreating(modelBuilder);

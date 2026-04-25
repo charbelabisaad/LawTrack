@@ -46,6 +46,9 @@ namespace LawTrack.Models
 		[StringLength(3, MinimumLength = 3)]
 		public string  StatusID { get; set; }
  
+		[ForeignKey("StatusID")]
+		public virtual CaseStatus CaseStatus { get; set; }
+		 
 		// 🔹 Assigned Lawyer/User
 		public int? AssignedUserID { get; set; }
 
@@ -86,8 +89,5 @@ namespace LawTrack.Models
 		[Column(TypeName = "nvarchar(max)")]
 		public string? Notes { get; set; }
  
-		[ForeignKey("StatusID")]
-		public virtual Status Status { get; set; }
-		 
 	}
 }

@@ -12,6 +12,19 @@ namespace LawTrack.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "CaseStatuses",
+                columns: table => new
+                {
+                    ID = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Color = table.Column<string>(type: "nvarchar(7)", maxLength: 7, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CaseStatuses", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Currencies",
                 columns: table => new
                 {
@@ -69,7 +82,7 @@ namespace LawTrack.Migrations
                 name: "Statuses",
                 columns: table => new
                 {
-                    ID = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: false),
+                    ID = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Color = table.Column<string>(type: "nvarchar(7)", maxLength: 7, nullable: false)
                 },
@@ -114,6 +127,106 @@ namespace LawTrack.Migrations
                         name: "FK_CurrencyConversions_Currencies_CurrencyIDTo",
                         column: x => x.CurrencyIDTo,
                         principalTable: "Currencies",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Modules",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    StatusID = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Modules", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Modules_Statuses_StatusID",
+                        column: x => x.StatusID,
+                        principalTable: "Statuses",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PermissionActions",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Code = table.Column<string>(type: "nvarchar(2)", maxLength: 2, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    IsForFeature = table.Column<bool>(type: "bit", nullable: false),
+                    StatusID = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PermissionActions", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_PermissionActions_Statuses_StatusID",
+                        column: x => x.StatusID,
+                        principalTable: "Statuses",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PermissionValues",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    StatusID = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PermissionValues", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_PermissionValues_Statuses_StatusID",
+                        column: x => x.StatusID,
+                        principalTable: "Statuses",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Permissions",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Code = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    Description = table.Column<string>(type: "text", nullable: false),
+                    ActionID = table.Column<int>(type: "int", nullable: false),
+                    ModuleID = table.Column<int>(type: "int", nullable: false),
+                    Type = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: false),
+                    Values = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    StatusID = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Permissions", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Permissions_Modules_ModuleID",
+                        column: x => x.ModuleID,
+                        principalTable: "Modules",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Permissions_PermissionActions_ActionID",
+                        column: x => x.ActionID,
+                        principalTable: "PermissionActions",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Permissions_Statuses_StatusID",
+                        column: x => x.StatusID,
+                        principalTable: "Statuses",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -290,6 +403,12 @@ namespace LawTrack.Migrations
                 {
                     table.PrimaryKey("PK_Cases", x => x.ID);
                     table.ForeignKey(
+                        name: "FK_Cases_CaseStatuses_StatusID",
+                        column: x => x.StatusID,
+                        principalTable: "CaseStatuses",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
                         name: "FK_Cases_Currencies_CurrencyIDDefault",
                         column: x => x.CurrencyIDDefault,
                         principalTable: "Currencies",
@@ -307,12 +426,6 @@ namespace LawTrack.Migrations
                         principalTable: "Priorities",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Cases_Statuses_StatusID",
-                        column: x => x.StatusID,
-                        principalTable: "Statuses",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -328,7 +441,7 @@ namespace LawTrack.Migrations
                     AssignedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     PriorityID = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: false),
                     TaskRecap = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    StatusID = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: false),
+                    StatusID = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: false),
                     CreatedUserID = table.Column<int>(type: "int", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdatedUserID = table.Column<int>(type: "int", nullable: true),
@@ -366,7 +479,7 @@ namespace LawTrack.Migrations
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Description = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    StatusID = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: false),
+                    StatusID = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: false),
                     CreatedUserID = table.Column<int>(type: "int", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdatedUserID = table.Column<int>(type: "int", nullable: true),
@@ -393,7 +506,7 @@ namespace LawTrack.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: true),
-                    StatusID = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: false),
+                    StatusID = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: false),
                     CreatedUserID = table.Column<int>(type: "int", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdatedUserID = table.Column<int>(type: "int", nullable: true),
@@ -426,7 +539,7 @@ namespace LawTrack.Migrations
                     Gender = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: false),
                     Notes = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TypeID = table.Column<int>(type: "int", nullable: false),
-                    StatusID = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: false),
+                    StatusID = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: false),
                     CreatedUserID = table.Column<int>(type: "int", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdatedUserID = table.Column<int>(type: "int", nullable: true),
@@ -452,7 +565,7 @@ namespace LawTrack.Migrations
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Description = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    StatusID = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: false),
+                    StatusID = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: false),
                     CreatedUserID = table.Column<int>(type: "int", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdatedUserID = table.Column<int>(type: "int", nullable: true),
@@ -481,7 +594,7 @@ namespace LawTrack.Migrations
                     Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     City = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Address = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    StatusID = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: false),
+                    StatusID = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: false),
                     CreatedUserID = table.Column<int>(type: "int", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdatedUserID = table.Column<int>(type: "int", nullable: true),
@@ -512,6 +625,7 @@ namespace LawTrack.Migrations
                     JudgeID = table.Column<int>(type: "int", nullable: true),
                     Result = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     NextSessionDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    StatusID = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: false),
                     CreatedUserID = table.Column<int>(type: "int", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdatedUserID = table.Column<int>(type: "int", nullable: true),
@@ -534,6 +648,12 @@ namespace LawTrack.Migrations
                         principalTable: "Courts",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_CourtSessions_Statuses_StatusID",
+                        column: x => x.StatusID,
+                        principalTable: "Statuses",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -544,7 +664,7 @@ namespace LawTrack.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: true),
-                    StatusID = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: false),
+                    StatusID = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: false),
                     CreatedUserID = table.Column<int>(type: "int", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdatedUserID = table.Column<int>(type: "int", nullable: true),
@@ -621,7 +741,7 @@ namespace LawTrack.Migrations
                     MobileNumber = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     OfficeNumber = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: true),
-                    StatusID = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: false),
+                    StatusID = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: false),
                     CreatedUserID = table.Column<int>(type: "int", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdatedUserID = table.Column<int>(type: "int", nullable: true),
@@ -641,6 +761,27 @@ namespace LawTrack.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "RolePermissions",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RoleID = table.Column<int>(type: "int", nullable: false),
+                    PermissionID = table.Column<int>(type: "int", nullable: false),
+                    Values = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RolePermissions", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_RolePermissions_Permissions_PermissionID",
+                        column: x => x.PermissionID,
+                        principalTable: "Permissions",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Roles",
                 columns: table => new
                 {
@@ -648,7 +789,7 @@ namespace LawTrack.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     IsAdmin = table.Column<bool>(type: "bit", nullable: false),
-                    StatusID = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: false),
+                    StatusID = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: false),
                     CreatedUserID = table.Column<int>(type: "int", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdatedUserID = table.Column<int>(type: "int", nullable: true),
@@ -680,7 +821,7 @@ namespace LawTrack.Migrations
                     Email = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
                     RoleID = table.Column<int>(type: "int", nullable: false),
                     UserTypeID = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: false),
-                    StatusID = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: false),
+                    StatusID = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: false),
                     CreatedUserID = table.Column<int>(type: "int", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdatedUserID = table.Column<int>(type: "int", nullable: true),
@@ -1070,6 +1211,11 @@ namespace LawTrack.Migrations
                 column: "JudgeID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_CourtSessions_StatusID",
+                table: "CourtSessions",
+                column: "StatusID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_CourtSessions_UpdatedUserID",
                 table: "CourtSessions",
                 column: "UpdatedUserID");
@@ -1153,6 +1299,46 @@ namespace LawTrack.Migrations
                 name: "IX_Judges_UpdatedUserID",
                 table: "Judges",
                 column: "UpdatedUserID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Modules_StatusID",
+                table: "Modules",
+                column: "StatusID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PermissionActions_StatusID",
+                table: "PermissionActions",
+                column: "StatusID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Permissions_ActionID",
+                table: "Permissions",
+                column: "ActionID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Permissions_ModuleID",
+                table: "Permissions",
+                column: "ModuleID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Permissions_StatusID",
+                table: "Permissions",
+                column: "StatusID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PermissionValues_StatusID",
+                table: "PermissionValues",
+                column: "StatusID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RolePermissions_PermissionID",
+                table: "RolePermissions",
+                column: "PermissionID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RolePermissions_RoleID",
+                table: "RolePermissions",
+                column: "RoleID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Roles_CreatedUserID",
@@ -1669,6 +1855,14 @@ namespace LawTrack.Migrations
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
+                name: "FK_RolePermissions_Roles_RoleID",
+                table: "RolePermissions",
+                column: "RoleID",
+                principalTable: "Roles",
+                principalColumn: "ID",
+                onDelete: ReferentialAction.Restrict);
+
+            migrationBuilder.AddForeignKey(
                 name: "FK_Roles_Users_CreatedUserID",
                 table: "Roles",
                 column: "CreatedUserID",
@@ -1733,6 +1927,12 @@ namespace LawTrack.Migrations
                 name: "ModelStatuses");
 
             migrationBuilder.DropTable(
+                name: "PermissionValues");
+
+            migrationBuilder.DropTable(
+                name: "RolePermissions");
+
+            migrationBuilder.DropTable(
                 name: "DocumentTypes");
 
             migrationBuilder.DropTable(
@@ -1748,10 +1948,22 @@ namespace LawTrack.Migrations
                 name: "Judges");
 
             migrationBuilder.DropTable(
+                name: "Permissions");
+
+            migrationBuilder.DropTable(
                 name: "Cases");
 
             migrationBuilder.DropTable(
                 name: "ChargeTypes");
+
+            migrationBuilder.DropTable(
+                name: "Modules");
+
+            migrationBuilder.DropTable(
+                name: "PermissionActions");
+
+            migrationBuilder.DropTable(
+                name: "CaseStatuses");
 
             migrationBuilder.DropTable(
                 name: "CaseTypes");

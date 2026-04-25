@@ -404,6 +404,27 @@ namespace LawTrack.Migrations
                     b.ToTable("CasePayments");
                 });
 
+            modelBuilder.Entity("LawTrack.Models.CaseStatus", b =>
+                {
+                    b.Property<string>("ID")
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<string>("Color")
+                        .IsRequired()
+                        .HasMaxLength(7)
+                        .HasColumnType("nvarchar(7)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("CaseStatuses");
+                });
+
             modelBuilder.Entity("LawTrack.Models.CaseTask", b =>
                 {
                     b.Property<int>("ID")
@@ -446,8 +467,8 @@ namespace LawTrack.Migrations
 
                     b.Property<string>("StatusID")
                         .IsRequired()
-                        .HasMaxLength(3)
-                        .HasColumnType("nvarchar(3)");
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<string>("TaskRecap")
                         .HasColumnType("nvarchar(max)");
@@ -509,8 +530,8 @@ namespace LawTrack.Migrations
 
                     b.Property<string>("StatusID")
                         .IsRequired()
-                        .HasMaxLength(3)
-                        .HasColumnType("nvarchar(3)");
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
@@ -562,8 +583,8 @@ namespace LawTrack.Migrations
 
                     b.Property<string>("StatusID")
                         .IsRequired()
-                        .HasMaxLength(3)
-                        .HasColumnType("nvarchar(3)");
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
@@ -637,8 +658,8 @@ namespace LawTrack.Migrations
 
                     b.Property<string>("StatusID")
                         .IsRequired()
-                        .HasMaxLength(3)
-                        .HasColumnType("nvarchar(3)");
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<int>("TypeID")
                         .HasColumnType("int");
@@ -691,8 +712,8 @@ namespace LawTrack.Migrations
 
                     b.Property<string>("StatusID")
                         .IsRequired()
-                        .HasMaxLength(3)
-                        .HasColumnType("nvarchar(3)");
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
@@ -753,8 +774,8 @@ namespace LawTrack.Migrations
 
                     b.Property<string>("StatusID")
                         .IsRequired()
-                        .HasMaxLength(3)
-                        .HasColumnType("nvarchar(3)");
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
@@ -813,6 +834,11 @@ namespace LawTrack.Migrations
                     b.Property<DateTime>("SessionDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("StatusID")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
@@ -830,6 +856,8 @@ namespace LawTrack.Migrations
                     b.HasIndex("DeletedUserID");
 
                     b.HasIndex("JudgeID");
+
+                    b.HasIndex("StatusID");
 
                     b.HasIndex("UpdatedUserID");
 
@@ -911,8 +939,8 @@ namespace LawTrack.Migrations
 
                     b.Property<string>("StatusID")
                         .IsRequired()
-                        .HasMaxLength(3)
-                        .HasColumnType("nvarchar(3)");
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
@@ -1057,8 +1085,8 @@ namespace LawTrack.Migrations
 
                     b.Property<string>("StatusID")
                         .IsRequired()
-                        .HasMaxLength(3)
-                        .HasColumnType("nvarchar(3)");
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
@@ -1102,6 +1130,31 @@ namespace LawTrack.Migrations
                     b.ToTable("ModelStatuses");
                 });
 
+            modelBuilder.Entity("LawTrack.Models.Module", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("StatusID")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("StatusID");
+
+                    b.ToTable("Modules");
+                });
+
             modelBuilder.Entity("LawTrack.Models.PaymentMethod", b =>
                 {
                     b.Property<int>("ID")
@@ -1127,6 +1180,117 @@ namespace LawTrack.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("PaymentMethods");
+                });
+
+            modelBuilder.Entity("LawTrack.Models.Permission", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int>("ActionID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("ModuleID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("StatusID")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<string>("Values")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ActionID");
+
+                    b.HasIndex("ModuleID");
+
+                    b.HasIndex("StatusID");
+
+                    b.ToTable("Permissions");
+                });
+
+            modelBuilder.Entity("LawTrack.Models.PermissionAction", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasMaxLength(2)
+                        .HasColumnType("nvarchar(2)");
+
+                    b.Property<bool>("IsForFeature")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("StatusID")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("StatusID");
+
+                    b.ToTable("PermissionActions");
+                });
+
+            modelBuilder.Entity("LawTrack.Models.PermissionValue", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StatusID")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("StatusID");
+
+                    b.ToTable("PermissionValues");
                 });
 
             modelBuilder.Entity("LawTrack.Models.Priority", b =>
@@ -1180,8 +1344,8 @@ namespace LawTrack.Migrations
 
                     b.Property<string>("StatusID")
                         .IsRequired()
-                        .HasMaxLength(3)
-                        .HasColumnType("nvarchar(3)");
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
@@ -1202,11 +1366,38 @@ namespace LawTrack.Migrations
                     b.ToTable("Roles");
                 });
 
+            modelBuilder.Entity("LawTrack.Models.RolePermission", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int>("PermissionID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RoleID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Values")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("PermissionID");
+
+                    b.HasIndex("RoleID");
+
+                    b.ToTable("RolePermissions");
+                });
+
             modelBuilder.Entity("LawTrack.Models.Status", b =>
                 {
                     b.Property<string>("ID")
-                        .HasMaxLength(3)
-                        .HasColumnType("nvarchar(3)");
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<string>("Color")
                         .IsRequired()
@@ -1267,8 +1458,8 @@ namespace LawTrack.Migrations
 
                     b.Property<string>("StatusID")
                         .IsRequired()
-                        .HasMaxLength(3)
-                        .HasColumnType("nvarchar(3)");
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
@@ -1360,7 +1551,7 @@ namespace LawTrack.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("LawTrack.Models.Status", "Status")
+                    b.HasOne("LawTrack.Models.CaseStatus", "CaseStatus")
                         .WithMany()
                         .HasForeignKey("StatusID")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -1379,6 +1570,8 @@ namespace LawTrack.Migrations
 
                     b.Navigation("AssignedUser");
 
+                    b.Navigation("CaseStatus");
+
                     b.Navigation("CaseType");
 
                     b.Navigation("Client");
@@ -1392,8 +1585,6 @@ namespace LawTrack.Migrations
                     b.Navigation("DeletedUser");
 
                     b.Navigation("Priority");
-
-                    b.Navigation("Status");
 
                     b.Navigation("UpdatedUser");
                 });
@@ -1849,6 +2040,12 @@ namespace LawTrack.Migrations
                         .HasForeignKey("JudgeID")
                         .OnDelete(DeleteBehavior.Restrict);
 
+                    b.HasOne("LawTrack.Models.Status", "Status")
+                        .WithMany()
+                        .HasForeignKey("StatusID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("LawTrack.Models.User", "UpdatedUser")
                         .WithMany()
                         .HasForeignKey("UpdatedUserID")
@@ -1863,6 +2060,8 @@ namespace LawTrack.Migrations
                     b.Navigation("DeletedUser");
 
                     b.Navigation("Judge");
+
+                    b.Navigation("Status");
 
                     b.Navigation("UpdatedUser");
                 });
@@ -1998,6 +2197,66 @@ namespace LawTrack.Migrations
                     b.Navigation("UpdatedUser");
                 });
 
+            modelBuilder.Entity("LawTrack.Models.Module", b =>
+                {
+                    b.HasOne("LawTrack.Models.Status", "Status")
+                        .WithMany()
+                        .HasForeignKey("StatusID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Status");
+                });
+
+            modelBuilder.Entity("LawTrack.Models.Permission", b =>
+                {
+                    b.HasOne("LawTrack.Models.PermissionAction", "Action")
+                        .WithMany()
+                        .HasForeignKey("ActionID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("LawTrack.Models.Module", "Module")
+                        .WithMany()
+                        .HasForeignKey("ModuleID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("LawTrack.Models.Status", "Status")
+                        .WithMany()
+                        .HasForeignKey("StatusID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Action");
+
+                    b.Navigation("Module");
+
+                    b.Navigation("Status");
+                });
+
+            modelBuilder.Entity("LawTrack.Models.PermissionAction", b =>
+                {
+                    b.HasOne("LawTrack.Models.Status", "Status")
+                        .WithMany()
+                        .HasForeignKey("StatusID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Status");
+                });
+
+            modelBuilder.Entity("LawTrack.Models.PermissionValue", b =>
+                {
+                    b.HasOne("LawTrack.Models.Status", "Status")
+                        .WithMany()
+                        .HasForeignKey("StatusID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Status");
+                });
+
             modelBuilder.Entity("LawTrack.Models.Role", b =>
                 {
                     b.HasOne("LawTrack.Models.User", "CreatedUser")
@@ -2028,6 +2287,25 @@ namespace LawTrack.Migrations
                     b.Navigation("Status");
 
                     b.Navigation("UpdatedUser");
+                });
+
+            modelBuilder.Entity("LawTrack.Models.RolePermission", b =>
+                {
+                    b.HasOne("LawTrack.Models.Permission", "Permission")
+                        .WithMany()
+                        .HasForeignKey("PermissionID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("LawTrack.Models.Role", "Role")
+                        .WithMany()
+                        .HasForeignKey("RoleID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Permission");
+
+                    b.Navigation("Role");
                 });
 
             modelBuilder.Entity("LawTrack.Models.User", b =>
