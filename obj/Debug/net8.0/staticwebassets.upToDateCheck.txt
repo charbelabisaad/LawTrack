@@ -1,4 +1,6 @@
 wwwroot\css\AdminLogIn.css
+wwwroot\css\CustomDatatable.css
+wwwroot\css\CustomModal.css
 wwwroot\css\site.css
 wwwroot\dist\css\adminlte.css
 wwwroot\dist\css\adminlte.css.map

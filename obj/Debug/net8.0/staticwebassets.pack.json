@@ -29,6 +29,14 @@
       "PackagePath": "staticwebassets\\css\\AdminLogIn.css"
     },
     {
+      "Id": "C:\\Users\\User\\Documents\\Job\\Web\\VS2022\\LawTrack\\LawTrack\\wwwroot\\css\\CustomDatatable.css",
+      "PackagePath": "staticwebassets\\css\\CustomDatatable.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\Documents\\Job\\Web\\VS2022\\LawTrack\\LawTrack\\wwwroot\\css\\CustomModal.css",
+      "PackagePath": "staticwebassets\\css\\CustomModal.css"
+    },
+    {
       "Id": "C:\\Users\\User\\Documents\\Job\\Web\\VS2022\\LawTrack\\LawTrack\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

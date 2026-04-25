@@ -8,7 +8,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - TsunamiTattooSupply</title>
+    <title>@ViewData["Title"] - LAWTRACK</title>
 
 
     <!-- Google Font: Source Sans Pro -->
@@ -403,25 +403,25 @@
                         <ul class="nav nav-treeview">
                             <li class="nav-item ml-3">
                                     <a asp-area="" asp-controller="Clients" asp-action="Index" class="nav-link @((currentController == "Clients" && currentAction == "Index")  ? "active" : string.Empty)">
-                                        <i class="bi bi-people nav-icon"></i>
+                                        <i class="fas fa-users nav-icon"></i>
                                     <p>Clients</p>
                                 </a>
 							</li>
                             <li class="nav-item ml-3">
                                     <a asp-area="" asp-controller="" asp-action="Index" class="nav-link @((currentController == "" && currentAction == "Index")  ? "active" : string.Empty)">
-									<i class="bi bi-person-badge nav-icon"></i>
+                                        <i class="fas fa-folder-open nav-icon"></i>
 									<p>Cases</p>
 								</a>
 							</li>
                             <li class="nav-item ml-3">
                                     <a asp-area="" asp-controller="PromoCode" asp-action="Index" class="nav-link @((currentController == "PromoCode" && currentAction == "Index")  ? "active" : string.Empty)">
-                                        <i class="bi bi-ticket-perforated nav-icon"></i>
+                                        <i class="fas fa-landmark nav-icon"></i>
                                     <p>Courts</p>
                                 </a>
                             </li>
                             <li class="nav-item ml-3">
                                     <a asp-area="" asp-controller="Subscriptions" asp-action="Index" class="nav-link @((currentController == "Subscriptions" && currentAction == "Index")  ? "active" : string.Empty)">
-                                        <i class="bi bi-newspaper nav-icon"></i>
+                                        <i class="fas fa-gavel nav-icon"></i>
                                     <p>Judges</p>
                                 </a>
                             </li>
@@ -442,25 +442,25 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item ml-3">
                                     <a asp-area="" asp-controller="About" asp-action="Index" class="nav-link @((currentController == "About" && currentAction == "Index")  ? "active" : string.Empty)">
-                                        <i class="bi bi-info-square nav-icon"></i>
+                                        <i class="fas fa-money-bill-transfer nav-icon"></i>
                                         <p>Charges</p>
                                     </a>
                                 </li>
                                 <li class="nav-item ml-3">
                                     <a asp-area="" asp-controller="About" asp-action="Index" class="nav-link @((currentController == "About" && currentAction == "Index")  ? "active" : string.Empty)">
-                                        <i class="bi bi-info-square nav-icon"></i>
+                                        <i class="fas fa-file-invoice-dollar nav-icon"></i>
                                         <p>Personal Fees</p>
                                     </a>
                                 </li>
                                 <li class="nav-item ml-3">
                                     <a asp-area="" asp-controller="Contact" asp-action="Index" class="nav-link @((currentController == "Contact" && currentAction == "Index")  ? "active" : string.Empty)">
-                                        <i class="bi bi-phone-vibrate nav-icon"></i>
+                                        <i class="fas fa-hand-holding-usd nav-icon"></i>
                                         <p>Payments</p>
                                     </a>
                                 </li>
                                 <li class="nav-item ml-3">
                                     <a asp-area="" asp-controller="Contact" asp-action="Index" class="nav-link @((currentController == "Contact" && currentAction == "Index")  ? "active" : string.Empty)">
-                                        <i class="bi bi-phone-vibrate nav-icon"></i>
+                                        <i class="fas fa-journal-whills nav-icon"></i>
                                         <p>Journal</p>
                                     </a>
                                 </li>
@@ -471,7 +471,7 @@
                                             || currentController == "Useful" || currentController == "Situation") ? "menu-open" : string.Empty)">
                             <a href="#" class="nav-link@((currentController == "About" || currentController == "Contact" || currentController == "Services"
                                                         || currentController == "Useful" || currentController == "Situation") ? "active" : string.Empty)">
-                                <i class="nav-icon fas fa-info-circle"></i>
+                                <i class="nav-icon fas fa-copy"></i>
                                 <p class="font-weight-bold">
                                     Reports
                                     <i class="fas fa-angle-left right"></i>
@@ -480,19 +480,19 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item ml-3">
                                     <a asp-area="" asp-controller="About" asp-action="Index" class="nav-link @((currentController == "About" && currentAction == "Index")  ? "active" : string.Empty)">
-                                        <i class="bi bi-info-square nav-icon"></i>
+                                        <i class="fas fa-file-contract nav-icon"></i>
                                         <p>Clients</p>
                                     </a>
                                 </li>
                                 <li class="nav-item ml-3">
                                     <a asp-area="" asp-controller="Contact" asp-action="Index" class="nav-link @((currentController == "Contact" && currentAction == "Index")  ? "active" : string.Empty)">
-                                        <i class="bi bi-phone-vibrate nav-icon"></i>
+                                        <i class="fas fa-file-contract nav-icon"></i>
                                         <p>Cases</p>
                                     </a>
                                 </li>
                                 <li class="nav-item ml-3">
                                     <a asp-area="" asp-controller="Contact" asp-action="Index" class="nav-link @((currentController == "Contact" && currentAction == "Index")  ? "active" : string.Empty)">
-                                        <i class="bi bi-phone-vibrate nav-icon"></i>
+                                        <i class="fas fa-file-contract nav-icon"></i>
                                         <p>Statement</p>
                                     </a>
                                 </li>
@@ -504,7 +504,7 @@
                                                         || currentController == "Useful" || currentController == "Situation") ? "active" : string.Empty)">
                             <i class="nav-icon fas fa-info-circle"></i>
                             <p class="font-weight-bold">
-                                Tsunami Information
+                                LAWTRACK Info.
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
@@ -525,7 +525,7 @@
                     </li> 
                         <li class="nav-item @((currentController == "Users" || currentController == "Roles") ? "menu-open" : string.Empty)">
                             <a href="#" class="nav-link @((currentController == "Users" || currentController == "Roles") ? "active" : string.Empty)">
-								<i class="nav-icon fa-solid fa-users"></i>
+								<i class="nav-icon fas fa-user-friends"></i>
 								<p class="font-weight-bold"> 
                                  Users Management
                                     <i class="fas fa-angle-left right"></i>
@@ -534,13 +534,13 @@
                          <ul class="nav nav-treeview"> 
                              <li class="nav-item ml-3">
                                     <a asp-controller="Users" asp-action="Index" class="nav-link @((currentController == "Users" && currentAction == "Index")  ? "active" : string.Empty)">
-                                        <i class="bi bi-person nav-icon"></i>
+                                        <i class="fas fa-user-alt nav-icon"></i>
 										<p>Users</p> 
                                  </a> 
                              </li> 
                              <li class="nav-item ml-3">
                                     <a asp-controller="Roles" asp-action="Index" class="nav-link @((currentController == "Roles" && currentAction == "Index")  ? "active" : string.Empty)">
-                                        <i class="bi bi-person-gear nav-icon"></i>
+                                        <i class="fas fa-user-cog nav-icon"></i>
                                         <p>Roles</p> 
                                  </a> 
                              </li>  
