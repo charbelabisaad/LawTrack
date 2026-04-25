@@ -8,8 +8,8 @@ namespace LawTrack.Models
 	[Index(nameof(PermissionID))]
 	public class RolePermission
 	{
-		[Key]
-		[Required]
+		[Key] 
+		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 		public int ID { get; set; }
 
 		[Required]

@@ -8,6 +8,7 @@ namespace LawTrack.Models
 	public class Module
 	{
 		[Key]
+		[DatabaseGenerated(DatabaseGeneratedOption.None)]
 		public int ID { get; set; }
 
 		[Required]

@@ -7,7 +7,8 @@ namespace LawTrack.Models
 	[Index(nameof(StatusID))]
 	public class PermissionAction
 	{
-		[Key] 
+		[Key]
+		[DatabaseGenerated(DatabaseGeneratedOption.None)]
 		public int ID { get; set; }
 
 		[Required]

@@ -10,6 +10,7 @@ namespace LawTrack.Models
 	public class Permission
 	{ 
 		[Key]
+		[DatabaseGenerated(DatabaseGeneratedOption.None)]
 		public int ID { get; set; }
 
 		[Required]

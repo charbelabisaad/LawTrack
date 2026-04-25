@@ -135,8 +135,7 @@ namespace LawTrack.Migrations
                 name: "Modules",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ID = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     StatusID = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: false)
                 },
@@ -155,8 +154,7 @@ namespace LawTrack.Migrations
                 name: "PermissionActions",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ID = table.Column<int>(type: "int", nullable: false),
                     Code = table.Column<string>(type: "nvarchar(2)", maxLength: 2, nullable: false),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     IsForFeature = table.Column<bool>(type: "bit", nullable: false),
@@ -177,8 +175,7 @@ namespace LawTrack.Migrations
                 name: "PermissionValues",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ID = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     StatusID = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: false)
                 },
@@ -197,8 +194,7 @@ namespace LawTrack.Migrations
                 name: "Permissions",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ID = table.Column<int>(type: "int", nullable: false),
                     Code = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     Description = table.Column<string>(type: "text", nullable: false),
