@@ -1,6 +1,7 @@
 ﻿using LawTrack.Data;
 using LawTrack.DTO;
 using LawTrack.Models;
+using LawTrack.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
@@ -20,18 +21,17 @@ namespace LawTrack.Controllers
 			_logger = logger;
 		}
 
-		public List<UserType> usertypes { get; set; }
-		public List<Role> roles { get; set; }
-		public List<User> users { get; set; }
-
+	
 		public IActionResult Index()
 		{
-			usertypes = GetUserTypes();
-			roles = GetRoles();
-			ViewBag.UserTypes = usertypes;
-			ViewBag.Roles = roles;
+			var vm = new PageViewModel
+			{
+				usertypes = GetUserTypes(),
+				roles = GetRoles(), 
+			};
+			 
 
-			return View("~/Views/Users/Index.cshtml");
+			return View("~/Views/Users/Index.cshtml", vm);
 		}
 
 		[HttpGet]

@@ -50,7 +50,7 @@
                         <div class="col-md-6 mb-3">
                             <label for="Role" class="form-label">Role</label>
                             <select id="Role" class="custom-select">
-                                @foreach (var role in ViewBag.Roles)
+                                @foreach (var role in Model.roles)
                                 {
                                     <option value="@role.ID">@role.Name</option>
                                 }
@@ -61,7 +61,7 @@
                         <div class="col-md-6 mb-3">
                             <label for="UserType" class="form-label">User Type</label>
                             <select id="UserType" class="custom-select">
-                                @foreach (var type in ViewBag.UserTypes)
+                                @foreach (var type in Model.usertypes)
                                 {
                                     <option value="@type.ID">@type.Description</option>
                                 }

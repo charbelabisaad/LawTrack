@@ -17,7 +17,7 @@ namespace LawTrack.Controllers
 			_logger = logger;
 		}
 
-		public List<Role> roles { get; set; }
+	
 
 		public IActionResult Index()
 		{
