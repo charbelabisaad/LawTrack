@@ -533,7 +533,7 @@ namespace LawTrack.Migrations
                     ContactPerson = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: true),
                     Address = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
                     Gender = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: false),
-                    Notes = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Notes = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TypeID = table.Column<int>(type: "int", nullable: false),
                     StatusID = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: false),
                     CreatedUserID = table.Column<int>(type: "int", nullable: true),

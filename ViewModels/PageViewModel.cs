@@ -7,7 +7,7 @@ namespace LawTrack.ViewModels
 		public List<UserType> usertypes { get; set; }
 		public List<Role> roles { get; set; }
 		public List<User> users { get; set; }
-		public List<ClientType> clientTypes { get; set; }
+		public List<ClientType> clienttypes { get; set; }
 
 	}
 }

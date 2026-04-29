@@ -14,11 +14,14 @@ namespace LawTrack.Models
 		[Required]
 		[StringLength(50)]
 		public string Description { get; set; }
-		 
+
+		[Required]
+		public bool IsDefault { get; set; } = false;
+
 		[Required]
 		[StringLength(1, MinimumLength = 1)]
 		public string StatusID { get; set; }
-
+		 
 		[ForeignKey("StatusID")]
 		public virtual Status Status { get; set; }
 		 

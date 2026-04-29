@@ -5,3 +5,457 @@
     Layout = "_Layout";
     ViewData["Title"] = "Clients";
 }
+
+<partial name="saveclient" />
+<partial name="deleteclient" />
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">@ViewData["Title"]</h1>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-6 d-flex align-items-center"><h3 class="card-title">Clients List</h3></div>
+                        <div class="col-6 d-flex align-items-center justify-content-end">
+                            <button id="btnNewClient" type="button" class="btn btn-sm btn-black"><i class="fas fa-plus"></i> Add New Client</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="card-body p-0">
+
+                    <div class="col-sm-12 mt-3">
+                        <table id="tableClients" class="table table-striped w-100 ">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Mobile</th>
+                                    <th>Email</th>
+                                    <th>Contact Person</th> 
+                                    <th style="width:50px">Status</th>
+                                    <th class="no-export" style="width:50px">Actions</th>
+                                </tr>
+                            </thead>
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+</div>
+
+@section Scripts{
+
+    <script>
+
+        $(document).ready(function(){
+
+            var table = $('#tableClients').DataTable({
+                processing: true,
+                responsive: true,
+                ajax: {
+                    url: '@Url.Action("ListGetClients", "Clients")',
+                    type: 'GET',
+                    dataSrc: function (json) {
+
+                        if (json && json.success === false) {
+                            toastr.error(json.message || "Failed to load clients.");
+                            return [];
+                        }
+
+                        if (!json || !json.clients) {
+                            toastr.error("Unexpected response from server.");
+                            return [];
+                        }
+
+                        return json.clients;
+                    }
+                },
+
+                dom: '<"row mb-2"<"col-md-6"f><"col-md-6 text-right"B>>t<"row mt-2"<"col-md-6"l><"col-md-6 text-right"ip>>',
+
+                language: {
+                    search: "",
+                    searchPlaceholder: "Search clients..."
+                },
+
+                buttons: [
+                    { extend: 'copy', className: 'btn btn-secondary btn-sm', exportOptions: { columns: ':visible:not(.no-export)' }, text: '<i class="fas fa-copy"></i> Copy' },
+                    { extend: 'excel', className: 'btn btn-success btn-sm', exportOptions: { columns: ':visible:not(.no-export)' }, text: '<i class="fas fa-file-excel"></i> Excel' },
+                    {
+                        extend: 'pdfHtml5',
+                        className: 'btn btn-danger btn-sm',
+                        exportOptions: { columns: ':visible:not(.no-export)' },
+                        text: '<i class="fas fa-file-pdf"></i> PDF',
+                        customize: function (doc) {
+
+                            var tableBody = doc.content[1].table.body;
+                            var colCount = tableBody[0].length;
+
+                            var colWidths = [];
+                            for (var i = 0; i < colCount; i++) {
+                                colWidths.push('*');
+                            }
+
+                            doc.content[1].table.widths = colWidths;
+
+                            doc.styles.tableBodyEven.alignment = 'center';
+                            doc.styles.tableBodyOdd.alignment = 'center';
+                            doc.styles.tableHeader.alignment = 'center';
+                            doc.defaultStyle.fontSize = 8;
+                            doc.pageMargins = [10, 10, 10, 10];
+                        }
+                    },
+                    { extend: 'print', className: 'btn btn-dark btn-sm', exportOptions: { columns: ':visible:not(.no-export)' }, text: '<i class="fas fa-print"></i> Print' },
+                    {
+                        text: '<i class="fas fa-sync"></i> Refresh',
+                        className: 'btn btn-primary btn-sm',
+                        action: function () {
+                            table.ajax.reload();
+                        }
+                    }
+                ],
+
+                columns: [
+                    { data: 'id', className: 'align-middle' },
+                    { data: 'name', className: 'align-middle' },
+                    { data: 'mobile', className: 'align-middle' },
+                    { data: 'email', className: 'align-middle' },
+                    { data: 'contactPerson', className: 'align-middle' },
+
+                    {
+                        data: 'statusDescription',
+                        className: 'align-middle text-center',
+                        render: function (data, type, row) {
+                            return `<div class="badge text-white text-center"
+                                        style="background-color:#${row.statusColor}; width:100px">
+                                        ${data}
+                                    </div>`;
+                        }
+                    },
+
+                    {
+                        data: null,
+                        orderable: false,
+                        searchable: false,
+                        className: "no-export align-middle text-center",
+                        render: function (data, type, row) {
+                        return `
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-light" type="button" data-toggle="dropdown">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <div class="dropdown-menu">
+
+                                    <a class="dropdown-item btnEditClient"
+                                        style="cursor:pointer"
+                                        data-id="${row.id}"
+                                        data-name="${row.name}"
+                                        data-mobile="${row.mobile}"
+                                        data-email="${row.email}"
+                                        data-contactperson="${row.contactPerson}"
+                                        data-address="${row.address}"
+                                        data-gender="${row.gender}"
+                                        data-notes="${row.notes}"
+                                        data-typeid="${row.typeID}"
+                                        data-statusid="${row.statusID}">
+                                        <i class="fas fa-edit"></i> Edit
+                                    </a>
+
+                                    <a class="dropdown-item btnDeleteClient"
+                                        style="cursor:pointer"
+                                        data-id="${row.id}"
+                                        data-name="${row.name}">
+                                        <i class="fas fa-trash"></i> Delete
+                                    </a>
+
+                                </div>
+                            </div>
+                        `;
+                    }
+                    }
+                ]
+            });
+
+            // same filter styling
+            var $filter = $('#tableClients_filter');
+            $filter.css("position", "relative");
+
+            $(document).on('click', '#btnNewClient', function () {
+
+                let form = $('#clientForm')[0];
+
+                form.reset();
+
+                // Reset ID
+                $('#ClientID').val(0);
+
+                // Reset dropdowns
+                let defaultOption = $('#ClientTypeID option[data-isdefault="True"]');
+
+                if (defaultOption.length > 0) {
+                    $('#ClientTypeID').val(defaultOption.val()).trigger('change');
+                } else {
+                    $('#ClientTypeID').val('').trigger('change');
+                }
+
+                // Reset gender
+                $('#genderMale').prop('checked', true);
+
+                // Reset status switch
+                $('#ClientStatusSwitch').prop('checked', true);
+                $('#ClientStatusID').val('A');
+                $('#statusLabel').text('Active');
+
+                // Clear validation
+                $('.form-control').removeClass('is-invalid');
+
+                // Title
+                $('#modalClientTitle').text('Create New Client');
+
+                // Show modal
+                $('#saveClientModal').modal('show');
+
+            });
+
+            $(document).on('click', '.btnEditClient', function () {
+
+                let btn = $(this);
+
+                // =========================
+                // SET VALUES
+                // =========================
+                $('#ClientID').val(btn.data('id'));
+                $('#ClientName').val(btn.data('name'));
+                $('#ClientMobile').val(btn.data('mobile'));
+                $('#ClientEmail').val(btn.data('email'));
+                $('#ClientContactPerson').val(btn.data('contactperson'));
+                $('#ClientAddress').val(btn.data('address'));
+                $('#ClientNotes').val(btn.data('notes'));
+
+                // Type
+                $('#ClientTypeID').val(btn.data('typeid')).trigger('change');
+
+                // Gender
+            
+                if(btn.data('gender') == "M")
+                    $('#genderMale').prop('checked', true);
+
+                if(btn.data('gender') == "F")
+                    $('#genderFemale').prop('checked', true);
+                 
+                // Status
+                if (btn.data('statusid') === 'A') {
+                    $('#ClientStatusSwitch').prop('checked', true);
+                    $('#statusLabel').text('Active');
+                } else {
+                    $('#ClientStatusSwitch').prop('checked', false);
+                    $('#statusLabel').text('Inactive');
+                }
+
+                $('#ClientStatusID').val(btn.data('statusid'));
+
+                // Title
+                $('#modalClientTitle').text('Edit Client');
+
+                // Clear validation
+                $('.form-control').removeClass('is-invalid');
+
+                // Show modal
+                $('#saveClientModal').modal('show');
+
+            });
+
+            $(document).on('click', '#btnSaveClient', function () {
+
+                let form = $('#clientForm');
+
+                // =========================
+                // RESET UI
+                // =========================
+                $('.form-control').removeClass('is-invalid');
+                $('input[name="Gender"]').removeClass('is-invalid');
+
+                let hasError = false;
+
+                // =========================
+                // GET VALUES
+                // =========================
+                let name = $('#ClientName');
+                let mobile = $('#ClientMobile');
+                let type = $('#ClientTypeID');
+                let gender = $('input[name="Gender"]:checked');
+                let status = $('#ClientStatusID');
+
+                // =========================
+                // VALIDATION
+                // =========================
+
+                if (name.val().trim() === '') {
+                    name.addClass('is-invalid');
+                    hasError = true;
+                }
+
+                if (mobile.val().trim() === '') {
+                    mobile.addClass('is-invalid');
+                    hasError = true;
+                }
+
+                if (type.val() === '' || type.val() == 0) {
+                    type.addClass('is-invalid');
+                    hasError = true;
+                }
+
+                if (gender.length === 0) {
+                    $('input[name="Gender"]').addClass('is-invalid');
+                    hasError = true;
+                }
+
+                if (!status.val()) {
+                    toastr.error("Status is required");
+                    hasError = true;
+                }
+
+                if (hasError) {
+                    toastr.error("Please fill all required fields");
+                    return;
+                }
+
+                // =========================
+                // SUBMIT
+                // =========================
+
+                let formData = new FormData(form[0]);
+
+                $.ajax({
+                    url: '@Url.Action("SaveClient","Clients")',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    headers: {
+                        'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+                    },
+                    beforeSend: function () {
+                        $('#btnSaveClient').prop('disabled', true);
+                    },
+                    success: function (res) {
+
+                        if (res.success) {
+
+                            toastr.success("Client saved successfully");
+
+                            $('#saveClientModal').modal('hide');
+
+                            $('#tableClients').DataTable().ajax.reload();
+
+                        } else {
+                            toastr.error(res.message || "Error saving client");
+                        }
+                    },
+                    error: function () {
+                        toastr.error("Server error");
+                    },
+                    complete: function () {
+                        $('#btnSaveClient').prop('disabled', false);
+                    }
+                });
+
+            });
+
+            $(document).on('click', '.btnDeleteClient', function () {
+
+                let id = $(this).data('id');
+                let name = $(this).data('name');
+
+                // set hidden ID
+                $('#deletedClientId').val(id);
+
+                // set confirmation message
+                $('#deleteClientMessage').html(`Are you sure you want to delete <span class="font-weight-bold">${name}</span> ?`);
+
+                // reset error message
+                $('#deleteModalMessage').hide().text('');
+
+                // show modal
+                $('#deleteClientModal').modal('show');
+
+            }); 
+
+            $(document).on('click', '#btnConfirmDeleteClient', function () {
+
+                let id = $('#deletedClientId').val();
+
+                if (!id || id == 0) {
+                    toastr.error("Invalid client");
+                    return;
+                }
+
+                let btn = $(this);
+                let spinner = $('#btnDeleteSpinner');
+                let msg = $('#deleteModalMessage');
+
+                // reset message
+                msg.hide().text('');
+
+                // show loading
+                spinner.removeClass('d-none');
+                btn.prop('disabled', true);
+
+                $.ajax({
+                    url: '@Url.Action("DeleteClient","Clients")',
+                    type: 'POST',
+                    data: {
+                        id: id,
+                        __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
+                    },
+                    success: function (res) {
+
+                        if (res.success) {
+
+                            toastr.success("Client deleted successfully");
+
+                            $('#deleteClientModal').modal('hide');
+
+                            // reload DataTable
+                            $('#tableClients').DataTable().ajax.reload(null, false);
+
+                        } else {
+                            msg.text(res.message || "Delete failed").show();
+                        }
+                    },
+                    error: function () {
+                        toastr.error("Server error");
+                    },
+                    complete: function () {
+                        spinner.addClass('d-none');
+                        btn.prop('disabled', false);
+                    }
+                });
+            });
+
+        });
+
+    </script>
+
+}

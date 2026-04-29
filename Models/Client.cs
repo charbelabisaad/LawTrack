@@ -28,12 +28,10 @@ namespace LawTrack.Models
 
 		[StringLength(1000)]
 		public string? Address {  get; set; }
-
-		[Required]
+		 
 		[StringLength(1, MinimumLength = 1)]
 		public string Gender { get; set; }
-
-		[Required]
+		 
 		[Column(TypeName ="nvarchar(max)")]
 		public string? Notes { get; set; }
 

@@ -1,0 +1,180 @@
+﻿<div class="modal fade fullmodal-right" id="saveClientModal" tabindex="-1" aria-hidden="true">
+	<div class="modal-dialog modal-lg" role="document">
+		 
+        <div class="modal-content" style="position:relative">
+			 
+			<div class="modal-header">
+				<h5 id="modalClientTitle" class="modal-title">Create New Client</h5>
+				<button id="btnCloseClient" type="button" class="btn-close border-0" data-bs-dismiss="modal"><i class="fas fa-close"></i></button>
+			</div>
+
+			<!-- Form -->
+			<form id="clientForm" method="post" enctype="multipart/form-data" class="d-flex flex-column flex-grow-1">
+
+				@Html.AntiForgeryToken()
+
+				<div class="modal-body flex-grow-1">
+
+                    <div class="card">
+
+                        <div class="card-header font-weight-bold">
+                            
+                            <div class="row align-items-center">
+
+                                <div class="col-6">
+                                    <i class="fas fa-info-circle"></i> Personal Information
+                                </div>
+
+                                <!-- Status -->
+                                <div class="col-6 text-right">
+                                    
+                                    <div class="custom-control custom-switch ">
+                                        <input type="checkbox"
+                                               class="custom-control-input"
+                                               id="ClientStatusSwitch">
+
+                                        <label class="custom-control-label" for="ClientStatusSwitch">
+                                            <span id="statusLabel">Active</span>
+                                        </label>
+                                    </div>
+
+                                    <!-- hidden value sent to backend -->
+                                    <input type="hidden" id="ClientStatusID" name="StatusID" value="A" />
+                                </div>
+
+                            </div>
+
+                            
+                        </div>
+
+                        <div class="card-body">
+
+                            <div class="row">
+
+                                <input type="hidden" id="ClientID" name="ID" value="0" />
+
+                                <!-- Name -->
+                                <div class="col-12 col-md-4">
+                                    <label>Name *</label>
+                                    <input type="text" id="ClientName" name="Name" class="form-control" maxlength="300" placeholder="Fill client name" />
+                                </div>
+
+                                <!-- Mobile -->
+                                <div class="col-12 col-md-4">
+                                    <label>Mobile *</label>
+                                    <input type="text" id="ClientMobile" name="Mobile" class="form-control" maxlength="50" placeholder="Fill client mobile" />
+                                </div>
+
+                                <!-- Email -->
+                                <div class="col-12 col-md-4">
+                                    <label>Email</label>
+                                    <input type="email" id="ClientEmail" name="Email" class="form-control" maxlength="300" placeholder="Fill client email" />
+                                </div>
+                            </div>
+                             
+                            <div class="row mt-3">
+
+                                <!-- Contact Person -->
+                                <div class="col-12 col-md-6">
+                                    <label>Contact Person</label>
+                                    <input type="text" id="ClientContactPerson" name="ContactPerson" class="form-control" maxlength="300" placeholder="Fill client contact person" />
+                                </div>
+
+                                <!-- Type -->
+                                <div class="col-12 col-md-3">
+                                    <label>Type *</label>
+                                    <select id="ClientTypeID" name="TypeID" class="form-control">
+                                         
+                                        @foreach(var obj in Model.clienttypes){
+
+                                            if(obj.IsDefault == true){
+                                                <option value="@obj.ID" data-isdefault="@obj.IsDefault" selected>@obj.Description</option>
+                                            }
+                                            else{
+                                                <option value="@obj.ID" data-isdefault="@obj.IsDefault">@obj.Description</option>
+                                            }
+
+                                           
+                                        }
+
+                                    </select>
+                                </div>
+
+                                <!-- Gender -->
+                                <div class="col-12 col-md-3">
+
+                                    <label>Gender *</label>
+
+                                    <div class="mt-2">
+
+                                        <div class="custom-control custom-radio custom-control-inline">
+                                            <input type="radio"
+                                                   id="genderMale"
+                                                   name="Gender"
+                                                   value="M"
+                                                   class="custom-control-input" checked>
+
+                                            <label class="custom-control-label" for="genderMale">
+                                                Male
+                                            </label>
+                                        </div>
+
+                                        <div class="custom-control custom-radio custom-control-inline">
+                                            <input type="radio"
+                                                   id="genderFemale"
+                                                   name="Gender"
+                                                   value="F"
+                                                   class="custom-control-input">
+
+                                            <label class="custom-control-label" for="genderFemale">
+                                                Female
+                                            </label>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                 
+                            </div>
+
+                            <div class="row mt-3">
+
+                                <!-- Address -->
+                                <div class="col-md-12 mb-3">
+                                    <label>Address</label>
+                                    <textarea id="ClientAddress" name="Address" class="form-control" rows="2" maxlength="1000" placeholder="Fill client address"></textarea>
+                                </div>
+
+                            </div>
+
+                            <div class="row mt-3">
+
+                                <!-- Notes -->
+                                <div class="col-12 col-md-12 mb-3">
+                                    <label>Notes</label>
+                                    <textarea id="ClientNotes" name="Notes" class="form-control" rows="3" placeholder="Enter notes"></textarea>
+                                </div>
+
+                              
+                                 
+                            </div>
+
+                        </div>
+
+                    </div>
+
+				</div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="btnSaveClient" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Save
+                    </button>
+                </div>
+
+			</form>
+
+		</div>
+
+	</div>
+
+</div>

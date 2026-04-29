@@ -710,6 +710,9 @@ namespace LawTrack.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<bool>("IsDefault")
+                        .HasColumnType("bit");
+
                     b.Property<string>("StatusID")
                         .IsRequired()
                         .HasMaxLength(1)
@@ -1133,10 +1136,7 @@ namespace LawTrack.Migrations
             modelBuilder.Entity("LawTrack.Models.Module", b =>
                 {
                     b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -1185,10 +1185,7 @@ namespace LawTrack.Migrations
             modelBuilder.Entity("LawTrack.Models.Permission", b =>
                 {
                     b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<int>("ActionID")
                         .HasColumnType("int");
@@ -1239,10 +1236,7 @@ namespace LawTrack.Migrations
             modelBuilder.Entity("LawTrack.Models.PermissionAction", b =>
                 {
                     b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<string>("Code")
                         .IsRequired()
@@ -1272,10 +1266,7 @@ namespace LawTrack.Migrations
             modelBuilder.Entity("LawTrack.Models.PermissionValue", b =>
                 {
                     b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<string>("Name")
                         .IsRequired()
